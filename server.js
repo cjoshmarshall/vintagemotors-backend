@@ -15,6 +15,6 @@ app.use('/api/tariff/',require('./routeTariff'))
 app.use('/api/users/',require('./routeUser'))
 app.use('/api/bookings/',require('./routeBooking'))
 
-app.get('/',(req,res)=>res.send('Hello world'))
+app.get('/',(req,res)=>res.send('Connected'))
 
 app.listen(port,()=>console.log(`App listening on port ${port}`))
