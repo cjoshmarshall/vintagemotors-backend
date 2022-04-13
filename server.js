@@ -10,10 +10,10 @@ const dbconnection=require('./database')
 app.use(express.json())
 app.use(cors())
 
-app.use('/api/auth/',require('./routeAuth'))
-app.use('/api/tariff/',require('./routeTariff'))
-app.use('/api/users/',require('./routeUser'))
-app.use('/api/bookings/',require('./routeBooking'))
+app.use('/api/auth/',require('./routes/routeAuth'))
+app.use('/api/tariff/',require('./routes/routeTariff'))
+app.use('/api/users/',require('./routes/routeUser'))
+app.use('/api/bookings/',require('./routes/routeBooking'))
 
 app.get('/',(req,res)=>res.send('Connected'))
 

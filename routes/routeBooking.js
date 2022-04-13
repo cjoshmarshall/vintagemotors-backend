@@ -1,7 +1,7 @@
 // const express=require('express');
 // const router=express.Router();
-// const booking=require('./modelBooking')
-// const tariff=require('./modelTariff')
+// const booking=require('../models/modelBooking')
+// const tariff=require('../models/modelTariff')
 
 // router.post('/bookbike',async(req,res)=>{
 //     req.body.transactionId='1234'
@@ -25,8 +25,8 @@
 const express=require('express');
 const router=express.Router();
 const stripe=require('stripe')('sk_test_51KOGnISEywSRKpM0SoJ6BhLxJPxiHJyj8Ar3ky5ivVBvavEOgi9CFq7HDPTQBx3DlTqlrN4u7FCgsZnZBCZ498sR00TOwzanku')
-const booking=require('./modelBooking')
-const tariff=require('./modelTariff')
+const booking=require('../models/modelBooking')
+const tariff=require('../models/modelTariff')
 const { v4: uuidv4 } = require('uuid');
 
 router.post('/bookbike',async(req,res)=>{

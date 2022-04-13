@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const User=require('./modelUser')
+const User=require('../models/modelUser')
 
 router.post('/login',async(req,res)=>{
     const{phone,password}=req.body

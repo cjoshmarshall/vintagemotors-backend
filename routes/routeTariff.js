@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const tariff=require('./modelTariff')
+const tariff=require('../models/modelTariff')
 
 router.get('/',async(req,res)=>{
     try{
