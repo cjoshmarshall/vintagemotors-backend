@@ -13,7 +13,9 @@ app.use(cors())
 app.use('/api/auth/',require('./routes/routeAuth'))
 app.use('/api/tariff/',require('./routes/routeTariff'))
 app.use('/api/users/',require('./routes/routeUser'))
-app.use('/api/bookings/',require('./routes/routeBooking'))
+app.use('/api/comments/',require('./routes/routeComment'))
+app.use('/api/orders/',require('./routes/routeBooking'))
+
 
 app.get('/',(req,res)=>res.send('Connected'))
 

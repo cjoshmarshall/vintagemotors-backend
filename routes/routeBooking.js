@@ -1,30 +1,6 @@
-// const express=require('express');
-// const router=express.Router();
-// const booking=require('../models/modelBooking')
-// const tariff=require('../models/modelTariff')
-
-// router.post('/bookbike',async(req,res)=>{
-//     req.body.transactionId='1234'
-//     console.log(req.body)
-//     try{
-//         const newBooking=new booking(req.body)
-//         await newBooking.save()
-//         const bike=await tariff.findOne({_id:req.body.bike.toString()})
-//         bike.bookedTimeSlot.push(req.body.bookedTimeSlot)
-//         await bike.save()
-//         res.send("Your booking is successful")
-//     }
-//     catch(error){
-//         return res.status(400).json(error)
-//     }
-// })
-
-// module.exports=router
-
-
 const express=require('express');
 const router=express.Router();
-const stripe=require('stripe')('sk_test_51KOGnISEywSRKpM0SoJ6BhLxJPxiHJyj8Ar3ky5ivVBvavEOgi9CFq7HDPTQBx3DlTqlrN4u7FCgsZnZBCZ498sR00TOwzanku')
+const stripe=require('stripe')(process.env.STRIPE_SECRET_KEY)
 const booking=require('../models/modelBooking')
 const tariff=require('../models/modelTariff')
 const { v4: uuidv4 } = require('uuid');
@@ -40,7 +16,7 @@ router.post('/bookbike',async(req,res)=>{
 
         const payment=await stripe.charges.create({
             amount:req.body.totalAomunt*100,
-            currency:'INR',
+            currency:'inr',
             customer:customer.id,
             receipt_email:token.email
         },{
@@ -52,18 +28,25 @@ router.post('/bookbike',async(req,res)=>{
             req.body.transactionId=payment.source.id
             const newBooking=new booking(req.body)
             await newBooking.save()
-            const bike=await tariff.findOne({_id:req.body.bike.toString()})
+            const bike=await tariff.findOne({_id:req.body.bike})
             bike.bookedTimeSlot.push(req.body.bookedTimeSlot)
             await bike.save()
             res.send("Your booking is successful")
         }else{
             return res.status(400).json(error)  
-        }
-
-        
+        }        
     }
     catch(error){
         return res.status(400).json(error)  
+    }
+})
+
+router.get("/getallbookings",async(req,res)=>{
+    try{
+        const bookings=await booking.find().populate("bike")
+        res.send(bookings)
+    }catch(error){
+        res.status(400).json(error)
     }
 })
 
