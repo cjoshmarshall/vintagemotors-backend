@@ -7,15 +7,14 @@ const { v4: uuidv4 } = require('uuid');
 
 router.post('/bookbike',async(req,res)=>{
     const {token}=req.body
-    console.log(req.body)
     try{
-        const customer=await stripe.customer.create({
+        const customer=await stripe.customers.create({
             email:token.email,
             source:token.id
         })
 
-        const payment=await stripe.charges.create({
-            amount:req.body.totalAomunt*100,
+        const payment=await stripe.paymentIntents.create({
+            amount:req.body.totalAmount*100,
             currency:'inr',
             customer:customer.id,
             receipt_email:token.email
@@ -25,7 +24,7 @@ router.post('/bookbike',async(req,res)=>{
 
         if(payment)
         {
-            req.body.transactionId=payment.source.id
+            req.body.transactionId=payment.id
             const newBooking=new booking(req.body)
             await newBooking.save()
             const bike=await tariff.findOne({_id:req.body.bike})
