@@ -2,10 +2,21 @@ const express=require('express');
 const cors=require('cors');
 const app=express();
 const port=process.env.PORT || 3006
+const mongoose=require("mongoose");
+const dotenv=require('dotenv')
 
-require('dotenv').config();
+dotenv.config();
 
-const dbconnection=require('./database')
+
+mongoose
+    .connect(process.env.MONGO_URL,{
+        useUnifiedTopology:true,
+        useNewUrlParser:true
+    })
+    .then(()=>console.log("DBConnected"))
+    .catch((err)=>{
+        console.log(err)
+    })
 
 app.use(express.json())
 app.use(cors())
@@ -17,6 +28,10 @@ app.use('/api/comments/',require('./routes/routeComment'))
 app.use('/api/orders/',require('./routes/routeBooking'))
 
 
-app.get('/',(req,res)=>res.send('Connected'))
+app.get('/',(req,res)=>
+    res.send('Connected')
+)
 
-app.listen(port,()=>console.log(`App listening on port ${port}`))
+app.listen(port,()=>{
+    console.log(`App listening on port ${port}`)
+})
