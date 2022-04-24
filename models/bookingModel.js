@@ -13,6 +13,6 @@ const bookingSchema=new mongoose.Schema({
 
 },{timestamps:true})
 
-const modelBooking=mongoose.model('booking',bookingSchema)
+const bookingModel=mongoose.model('booking',bookingSchema)
 
-module.exports=modelBooking;
+module.exports=bookingModel;

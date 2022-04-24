@@ -15,6 +15,6 @@ const tariffSchema=new mongoose.Schema({
     collection:'tariff'
 })
 
-const modelTariff=mongoose.model('tariff',tariffSchema)
+const tariffModel=mongoose.model('tariff',tariffSchema)
 
-module.exports=modelTariff;
+module.exports=tariffModel;

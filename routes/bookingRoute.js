@@ -1,9 +1,11 @@
 const express=require('express');
 const router=express.Router();
 const stripe=require('stripe')(process.env.STRIPE_SECRET_KEY)
-const booking=require('../models/modelBooking')
-const tariff=require('../models/modelTariff')
+const booking=require('../models/bookingModel')
+const tariff=require('../models/tariffModel')
+const user=require('../models/userModel')
 const { v4: uuidv4 } = require('uuid');
+const { userInfo } = require('os');
 
 router.post('/bookbike',async(req,res)=>{
     const {token}=req.body
@@ -43,6 +45,7 @@ router.post('/bookbike',async(req,res)=>{
 router.get("/getallbookings",async(req,res)=>{
     try{
         const bookings=await booking.find().populate("bike")
+        // console.log(bookings)
         res.send(bookings)
     }catch(error){
         res.status(400).json(error)

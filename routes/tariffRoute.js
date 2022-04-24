@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const tariff=require('../models/modelTariff')
+const tariff=require('../models/tariffModel')
 
 
 router.post('/',async(req,res)=>{
@@ -31,4 +31,5 @@ router.get('/',async(req,res)=>{
         return res.status(400).json(error);
     }
 })
+
 module.exports=router;

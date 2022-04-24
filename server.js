@@ -21,12 +21,19 @@ mongoose
 app.use(express.json())
 app.use(cors())
 
-app.use('/api/auth/',require('./routes/routeAuth'))
-app.use('/api/tariff/',require('./routes/routeTariff'))
-app.use('/api/users/',require('./routes/routeUser'))
-app.use('/api/comments/',require('./routes/routeComment'))
-app.use('/api/orders/',require('./routes/routeBooking'))
+app.use('/api/auth/',require('./routes/authRoute'))
+app.use('/api/tariff/',require('./routes/tariffRoute'))
+app.use('/api/comments/',require('./routes/commentRoute'))
+app.use('/api/orders/',require('./routes/bookingRoute'))
 
+const path=require("path")
+
+if (process.env.NODE_ENV === "production") {
+    app.use("/",express.static("client/build"));
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "client/build/index.html"));
+    });
+  }
 
 app.get('/',(req,res)=>
     res.send('Connected')
