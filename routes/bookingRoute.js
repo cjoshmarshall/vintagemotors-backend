@@ -5,7 +5,6 @@ const booking=require('../models/bookingModel')
 const tariff=require('../models/tariffModel')
 const user=require('../models/userModel')
 const { v4: uuidv4 } = require('uuid');
-const { userInfo } = require('os');
 
 router.post('/bookbike',async(req,res)=>{
     const {token}=req.body
