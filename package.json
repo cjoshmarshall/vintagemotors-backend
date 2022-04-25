@@ -5,7 +5,8 @@
   "main": "server.js",
   "engines":{
     "node":"16.13.1",
-    "npm":"8.1.2"},
+    "npm":"8.1.2"
+  },
   "scripts": {
     "start": "node server.js",
     "client-install": "npm install --prefix client",
