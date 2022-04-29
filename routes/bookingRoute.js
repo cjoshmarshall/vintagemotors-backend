@@ -43,8 +43,7 @@ router.post('/bookbike',async(req,res)=>{
 
 router.get("/getallbookings",async(req,res)=>{
     try{
-        const bookings=await booking.find().populate("bike")
-        // console.log(bookings)
+        const bookings=await booking.find().populate("bike").populate("user")
         res.send(bookings)
     }catch(error){
         res.status(400).json(error)
