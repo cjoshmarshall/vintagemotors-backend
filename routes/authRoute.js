@@ -6,7 +6,7 @@ const User=require('../models/userModel')
 const { verifyToken,verifyTokenAndAuth,verifyTokenAndAdmin }=require('./verifyToken');
 
 
-router.post('/login',verifyToken,async(req,res)=>{
+router.post('/login',async(req,res)=>{
     const{phone,password}=req.body
 
     try{
