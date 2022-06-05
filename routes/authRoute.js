@@ -21,7 +21,7 @@ router.post('/login',async(req,res)=>{
             {expiresIn:"3d"}
         )
         const { password,...others }=user._doc
-        if(user || match){
+        if(user && match){
             res.status(200).json({...others,accessToken})
         }
         else{
