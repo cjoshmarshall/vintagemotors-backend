@@ -1,5 +1,5 @@
 {
-  "name": "vintagmotors",
+  "name": "vintagemotors-server",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/cjoshmarshall/vintagemotors_server.git",
@@ -9,6 +9,7 @@
     "dev": "nodemon src/index.js"
   },
   "dependencies": {
+    "aws-serverless-express": "^3.4.0",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",

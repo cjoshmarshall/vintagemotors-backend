@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require("cors");
-const app = express();
-const port = process.env.PORT || 3006;
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
+const app = express();
+// const port = process.env.PORT || 3006;
 dotenv.config();
 
 mongoose
@@ -27,6 +27,8 @@ app.use("/api/orders/", require("./routes/bookingRoute"));
 
 app.get("/", (req, res) => res.send("Server Running"));
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`App listening on port ${port}`);
+// });
+
+module.exports = app;
