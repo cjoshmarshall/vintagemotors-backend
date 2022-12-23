@@ -1,18 +1,19 @@
-const mongoose=require('mongoose');
+const mongoose = require("mongoose");
 
-const bookingSchema=new mongoose.Schema({
-    
-    user:{type:mongoose.Schema.Types.ObjectId,ref:"users"},
-    bike:{type:mongoose.Schema.Types.ObjectId,ref:"tariff"},
-    totalHours:{type:Number},
-    gst:{type:Number},
-    sgst:{type:Number},
-    totalAmount:{type:Number},
-    bookedTimeSlot:{from:{type:String},to:{type:String}},
-    transactionId:{type:String},
+const bookingSchema = new mongoose.Schema(
+  {
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+    bike: { type: mongoose.Schema.Types.ObjectId, ref: "tariff" },
+    totalHours: { type: Number },
+    gst: { type: Number },
+    sgst: { type: Number },
+    totalAmount: { type: Number },
+    bookedTimeSlot: { from: { type: String }, to: { type: String } },
+    transactionId: { type: String },
+  },
+  { timestamps: true }
+);
 
-},{timestamps:true})
+const bookingModel = mongoose.model("booking", bookingSchema);
 
-const bookingModel=mongoose.model('booking',bookingSchema)
-
-module.exports=bookingModel;
+module.exports = bookingModel;

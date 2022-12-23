@@ -1,26 +1,22 @@
 {
-  "name": "server",
+  "name": "vintagmotors",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "engines":{
-    "node":"16.13.1",
-    "npm":"8.1.2"
-  },
+  "main": "index.js",
+  "repository": "https://github.com/cjoshmarshall/vintagemotors_server.git",
+  "license": "MIT",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.1.5",
-    "nodemon": "^2.0.15",
-    "stripe": "^8.201.0",
-    "uuid": "^8.3.2"
+    "mongoose": "^6.8.0",
+    "nodemon": "^2.0.20",
+    "stripe": "^11.2.0",
+    "uuid": "^9.0.0"
   }
 }
