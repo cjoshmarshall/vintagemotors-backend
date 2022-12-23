@@ -12,7 +12,7 @@ mongoose
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
-  .then(() => console.log("DBConnected"))
+  .then(() => console.log("Database Connected"))
   .catch((err) => {
     console.log(err);
   });
@@ -25,7 +25,7 @@ app.use("/api/tariff/", require("./routes/tariffRoute"));
 app.use("/api/comments/", require("./routes/commentRoute"));
 app.use("/api/orders/", require("./routes/bookingRoute"));
 
-app.get("/", (req, res) => res.send("Connected"));
+app.get("/", (req, res) => res.send("Server Running"));
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);

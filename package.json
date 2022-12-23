@@ -5,8 +5,8 @@
   "repository": "https://github.com/cjoshmarshall/vintagemotors_server.git",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
