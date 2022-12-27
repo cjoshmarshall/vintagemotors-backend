@@ -7,6 +7,7 @@ const app = express();
 // const port = process.env.PORT || 3006;
 dotenv.config();
 
+mongoose.set("strictQuery", false);
 mongoose
   .connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
