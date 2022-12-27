@@ -7,8 +7,8 @@ provider:
   region: ap-south-1
 
 functions:
-  crud:
-    handler: src/index.handler
+  api:
+    handler: handler.handler
     timeout: 10 #seconds
     memorySize: 256 #mb
     events:
