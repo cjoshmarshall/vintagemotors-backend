@@ -10,7 +10,7 @@ functions:
   api:
     handler: handler.handler
     timeout: 10 #seconds
-    memorySize: 256 #mb
+    memorySize: 128 #mb
     events:
       - http:
           path: /
