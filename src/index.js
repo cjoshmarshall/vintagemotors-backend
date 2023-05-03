@@ -2,9 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
 
 const app = express();
-// const port = process.env.PORT || 3006;
+const port = process.env.PORT || 3006;
 dotenv.config();
 
 mongoose.set("strictQuery", false);
@@ -13,6 +14,7 @@ mongoose
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
+  .then((db) => db.connection.readyState)
   .then(() => console.log("Database Connected"))
   .catch((err) => {
     console.log(err);
@@ -20,6 +22,7 @@ mongoose
 
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json());
 
 app.use("/api/auth/", require("./routes/authRoute"));
 app.use("/api/tariff/", require("./routes/tariffRoute"));
@@ -28,8 +31,9 @@ app.use("/api/orders/", require("./routes/bookingRoute"));
 
 app.get("/", (req, res) => res.send("Server Running"));
 
-// app.listen(port, () => {
-//   console.log(`App listening on port ${port}`);
-// });
+// * Local Server
+app.listen(port, () => {
+  console.log(`App listening on port ${port}`);
+});
 
 module.exports = app;
