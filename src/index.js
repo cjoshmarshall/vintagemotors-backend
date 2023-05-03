@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-var bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 
 const app = express();
@@ -22,7 +21,6 @@ mongoose
 
 app.use(express.json());
 app.use(cors());
-app.use(bodyParser.json());
 
 app.use("/api/auth/", require("./routes/authRoute"));
 app.use("/api/tariff/", require("./routes/tariffRoute"));
@@ -36,5 +34,3 @@ app.get("/", (req, res) => res.send("Server Running"));
 // });
 
 module.exports = app;
-
-git commit -m "Lambda to MongoDB Fix, Added Body Parser"
